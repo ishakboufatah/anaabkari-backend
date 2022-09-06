@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'anaabkari.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'d78kv727jadlgn',
-        'USER':'ybelgywijusgnt',
-        'PASSWORD':'3c2925040406e45c02d70478cb4dd78e499658dbb9b1fe929b1515bee82405af',
-        'HOST':'ec2-54-77-90-39.eu-west-1.compute.amazonaws.com',
+        'NAME':'d26bdkok89usmm',
+        'USER':'vlycuekfdppqrc',
+        'PASSWORD':'8650bcbcd1d588fd0a11c8403f54867b94227b07560bad8954fd7c0357c7aede',
+        'HOST':'ec2-44-193-178-122.compute-1.amazonaws.com',
         'PORT':'5432', 
     }
 
