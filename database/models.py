@@ -27,7 +27,7 @@ class SubjectsPrimary1(models.Model):
     science_score = models.DecimalField(max_digits=200, decimal_places=1, default=0)
     civil = models.DecimalField(max_digits=200, decimal_places=1, default=0)
     civil_score = models.DecimalField(max_digits=200, decimal_places=1, default=0)
-    user = models.OneToOneField('USER', models.CASCADE, db_column='user')
+    user = models.OneToOneField(User, models.CASCADE, db_column='user')
     def __str__(self) :
         return f"{self.user}"
 
@@ -48,7 +48,7 @@ class SubjectsPrimary2(models.Model):
     hist_geo_score = models.DecimalField(max_digits=200, decimal_places=1, default=0)
     french = models.DecimalField(max_digits=200, decimal_places=1, default=0)
     french_score = models.DecimalField(max_digits=200, decimal_places=1, default=0)
-    user = models.OneToOneField('USER', on_delete=models.CASCADE, db_column='user')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, db_column='user')
     def __str__(self) :
         return f"{self.user}"
 

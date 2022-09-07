@@ -20,13 +20,14 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.views.static import serve
 from rest_framework import routers
-from database.views import ClaseViewSet,SubjectsPrimary1ViewSet,SubjectsPrimary2ViewSet,USERViewSet
+from database.views import ClaseViewSet,SubjectsPrimary1ViewSet,SubjectsPrimary2ViewSet,USERViewSet,UserViewSet
 
 router = routers.DefaultRouter()
 router.register(r'Clase',ClaseViewSet,basename='Clase')
 router.register(r'SubjectsPrimary1',SubjectsPrimary1ViewSet,basename='SubjectsPrimary1')
 router.register(r'SubjectsPrimary2',SubjectsPrimary2ViewSet,basename='SubjectsPrimary2')
-router.register(r'USER',USERViewSet,basename='Clase')
+router.register(r'USER',USERViewSet,basename='USER')
+router.register(r'User',UserViewSet,basename='User')
 
 
 urlpatterns = [
