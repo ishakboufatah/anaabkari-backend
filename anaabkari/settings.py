@@ -24,9 +24,16 @@ SECRET_KEY = 'django-insecure-euj*sq5dsk&h@58h5##mlbst(0rdwb@pb3g2pc1vzv(g*5esc$
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    '127.0.0.1:8080',
+    'localhost:8080',
+)
 ALLOWED_HOSTS = ['127.0.0.1','localhost','moalimi.herokuapp.com']
-
+CORS_ALLOWED_ORIGINS =[
+    'http://localhost:8080','https://sheordatabase.github.io'
+]
+SESSION_COOKIE_HTTPONLY =False
 
 # Application definition
 
@@ -39,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'djoser',
     'database',
 ]
 
@@ -145,11 +154,17 @@ else:
   STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAdminUser',
     ),
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'COERCE_DECIMAL_TO_STRING':False,
+}
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
 }
 
 # Default primary key field type

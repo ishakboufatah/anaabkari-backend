@@ -1,3 +1,4 @@
+from numbers import Real
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -27,7 +28,7 @@ class SubjectsPrimary1(models.Model):
     science_score = models.DecimalField(max_digits=200, decimal_places=1, default=0)
     civil = models.DecimalField(max_digits=200, decimal_places=1, default=0)
     civil_score = models.DecimalField(max_digits=200, decimal_places=1, default=0)
-    user = models.OneToOneField(User, models.CASCADE, db_column='user')
+    user = models.OneToOneField('USER', models.CASCADE, db_column='user')
     def __str__(self) :
         return f"{self.user}"
 
@@ -48,7 +49,7 @@ class SubjectsPrimary2(models.Model):
     hist_geo_score = models.DecimalField(max_digits=200, decimal_places=1, default=0)
     french = models.DecimalField(max_digits=200, decimal_places=1, default=0)
     french_score = models.DecimalField(max_digits=200, decimal_places=1, default=0)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, db_column='user')
+    user = models.OneToOneField('USER', on_delete=models.CASCADE, db_column='user')
     def __str__(self) :
         return f"{self.user}"
 
@@ -73,9 +74,23 @@ post_save.connect(create_profile , sender=User)
 def create_SubjectsPrimary(sender, **kwargs):
     u=User.objects.get(user=kwargs['instance'])
     U=USER.objects.get(user=u)
-    if str(U.class_field)=='second_year_primary_school' or str(U.class_field)=='first_year_primary_school':
+    try:
+        P1=SubjectsPrimary1.objects.get(user=kwargs['instance'])
+        return False
+    except:
+        P1= True
+    try:
+        P2=SubjectsPrimary2.objects.get(user=kwargs['instance'])
+        return False
+    except:
+        P2= True
+
+    # P2=
+    if (str(U.class_field)=='second_year_primary_school' or str(U.class_field)=='first_year_primary_school' ) and (P1):
+        # and (P1 is None)
         user_profile = SubjectsPrimary1.objects.create(user=kwargs['instance'])
-    elif str(U.class_field)=='third_year_primary_school' or str(U.class_field)=='fourth_year_primary_school' or str(U.class_field)== 'fifth_year_primary_school':
+    elif (str(U.class_field)=='third_year_primary_school' or str(U.class_field)=='fourth_year_primary_school' or str(U.class_field)== 'fifth_year_primary_school') and (P2):
+        # and (P2 is None)
         user_profile = SubjectsPrimary2.objects.create(user=kwargs['instance'])
     #print(kwargs['instance'])
     #print(type(str(U.class_field)))

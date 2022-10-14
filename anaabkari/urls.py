@@ -31,8 +31,10 @@ router.register(r'User',UserViewSet,basename='User')
 
 
 urlpatterns = [
-    path('',include(router.urls)), 
+    path('api/v1/',include(router.urls)), 
     path('admin/', admin.site.urls),
+    path('api/v1/', include('djoser.urls')),
+    path('api/v1/', include('djoser.urls.jwt')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += [
 
