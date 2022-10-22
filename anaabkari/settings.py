@@ -25,16 +25,17 @@ SECRET_KEY = 'django-insecure-euj*sq5dsk&h@58h5##mlbst(0rdwb@pb3g2pc1vzv(g*5esc$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = (
-    '127.0.0.1:8080',
-    'localhost:8080',
-)
-ALLOWED_HOSTS = ['127.0.0.1','localhost','moalimi.herokuapp.com']
+
+# ALLOWED_HOSTS = ['192.168.1.7','127.0.0.1','localhost','moalimi.herokuapp.com']
 CORS_ALLOWED_ORIGINS =[
-    'http://localhost:8080','https://sheordatabase.github.io'
+    'http://192.168.1.7:8080','http://localhost:8080',
 ]
 SESSION_COOKIE_HTTPONLY =False
-
+CORS_ORIGIN_WHITELIST = (
+    '192.168.1.7:8080'
+    '127.0.0.1:8000',
+    'localhost:8080',
+)
 # Application definition
 
 INSTALLED_APPS = [
@@ -163,10 +164,13 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'COERCE_DECIMAL_TO_STRING':False,
 }
+from datetime import timedelta
 SIMPLE_JWT = {
    'AUTH_HEADER_TYPES': ('JWT',),
+#    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
-
+# AUTH_USER_MODEL = 'database.User'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
