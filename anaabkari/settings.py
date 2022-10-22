@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-euj*sq5dsk&h@58h5##mlbst(0rdwb@pb3g2pc1vzv(g*5esc$
 DEBUG = True
 CORS_ALLOW_CREDENTIALS = True
 
-# ALLOWED_HOSTS = ['192.168.1.7','127.0.0.1','localhost','moalimi.herokuapp.com']
+ALLOWED_HOSTS = ['192.168.1.7','127.0.0.1','localhost','moalimi.herokuapp.com']
 CORS_ALLOWED_ORIGINS =[
     'http://192.168.1.7:8080','http://localhost:8080',
 ]
