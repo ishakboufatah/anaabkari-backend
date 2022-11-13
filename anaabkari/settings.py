@@ -28,7 +28,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 ALLOWED_HOSTS = ['192.168.1.7','127.0.0.1','localhost','moalimi.herokuapp.com']
 CORS_ALLOWED_ORIGINS =[
-    'http://192.168.1.7:8080','http://localhost:8080',
+    'http://192.168.1.7:8080','http://localhost:8080','https://ishakboufatah.github.io/moalimi/'
 ]
 SESSION_COOKIE_HTTPONLY =False
 CORS_ORIGIN_WHITELIST = (
